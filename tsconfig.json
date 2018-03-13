@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "lib": [
+            "es2016",
+            "dom",
+            "dom.iterable"
+        ]
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}

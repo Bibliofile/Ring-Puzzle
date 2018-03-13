@@ -1,0 +1,76 @@
+* { box-sizing: border-box; }
+
+$one: #4286f4;
+$two: #e6e6e6;
+
+.container {
+    position: absolute;
+    top: 25vh;
+    left: calc(50vw - 25vh);
+    width: 50vh;
+    height: 50vh;
+    border-radius: 50%;
+    background: conic-gradient(
+        $one 0 1 / 16 * 360deg, 
+        $two 0 3 / 16 * 360deg, 
+        $one 0 5 / 16 * 360deg,
+        $two 0 7 / 16 * 360deg,
+        $one 0 9 / 16 * 360deg,
+        $two 0 11 / 16 * 360deg,
+        $one 0 13 / 16 * 360deg,
+        $two 0 15/ 16 * 360deg,
+        $one 0 360deg
+    );
+}
+
+html, body {
+    margin: 0; 
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+}
+
+.section {
+    position: absolute;
+    top: calc(50% - 1em);
+    left: calc(50% - 1em);
+    height: 1em;
+    width: 1em;
+}
+
+@mixin rotatePart($n) {
+    $rotation: 360deg / 8 * $n;
+
+    button {
+        width: 2em;
+        height: 2em;
+        border: 1px solid #000000;
+        border-radius: 50%;
+        transform-origin: center center;
+        background: #001381;
+        color: #ffffff;
+
+        transform:
+            rotate($rotation)
+            translate(5em, 0)
+            rotate(-$rotation);
+
+        &.out {
+            transform:
+                rotate($rotation)
+                translate(calc(5em + 8vh), 0)
+                rotate(-$rotation);
+        }
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+@for $i from 1 through 8 {
+    .section:nth-child(#{$i}) {
+        @include rotatePart($i);
+    }
+}
