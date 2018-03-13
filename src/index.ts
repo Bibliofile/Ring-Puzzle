@@ -9,6 +9,7 @@ const buttons = Array.from(document.querySelectorAll('button'))
 
 function canToggle(index: number): boolean {
     if (index < 1) return true
+    if (index > open.length) return false
     return open[index - 1] && open.slice(0, index - 1).every(o => !o)
 }
 
